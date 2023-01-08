@@ -37,12 +37,12 @@
 }
 
 .container_proto:hover:before {
-    border: 2px solid #fa7272;
+    border: 2px solid #f5bfbf;
     font-weight: 550 !important;
 }
 
 .container_proto:hover {
-    border: 2px dotted #fa7272 !important;
+    border: 2px dotted #f5bfbf !important;
 }
 
 .container_proto.focus {
@@ -185,12 +185,12 @@
 
 
 .col-4proto:hover:before {
-    border: 2px solid #8e40af;
+    border: 2px solid #f5bfbf;
     font-weight: 550 !important;
 }
 
 .col-4proto:hover {
-    border: 2px dotted #8E40AFFF !important;
+    border: 2px dotted #f5bfbf !important;
 }
 
 .col-4proto.focus {
@@ -198,12 +198,12 @@
 }
 
 .col-8proto:hover:before {
-    border: 2px solid #8e40af;
+    border: 2px solid #f5bfbf;
     font-weight: 550 !important;
 }
 
 .col-8proto:hover {
-    border: 2px dotted #8E40AFFF !important;
+    border: 2px dotted #f5bfbf !important;
 }
 
 .col-8proto.focus {
@@ -212,13 +212,13 @@
 
 
 .colproto:hover:before {
-    border: 2px solid #8e40af;
+    border: 2px solid #f5bfbf;
     font-weight: 550 !important;
 }
 
 
 .colproto:hover {
-    border: 2px dotted #8E40AFFF !important;
+    border: 2px dotted #f5bfbf !important;
 }
 
 .colproto.focus {
@@ -237,13 +237,14 @@
 }
 
 .input-groupproto:hover {
-    border: 2px solid #673d9b !important;
+    border: 2px solid #f5bfbf !important;
     border-radius: 4px;
 }
 
 .input-groupproto.focus {
     border: 2px solid red !important;
-    border-radius: 4px
+    border-radius: 4px;
+    z-index: 99;
 }
 
 .form-checkproto {
@@ -254,7 +255,7 @@
 }
 
 .form-checkproto:hover {
-    border: 2px solid #673d9b !important;
+    border: 2px solid #f5bfbf !important;
     border-radius: 4px;
 }
 
@@ -275,7 +276,7 @@
 .compo_proto:hover {
     margin-top: 15px;
     margin-left: 30px;
-    border: 2px solid #673d9b !important;
+    border: 2px solid #f5bfbf !important;
     border-radius: 4px;
 }
 
@@ -557,3 +558,10 @@ input:checked + .slider .off {
 }
 
 
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    /* border-color: #86b7fe; */
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 6%);
+}

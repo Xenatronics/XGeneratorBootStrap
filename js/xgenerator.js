@@ -425,24 +425,39 @@ function AddListenerComponents(classname, typename) {
             AllUnSelection();
             let selected = this.classList.toggle("focus");
             if (selected) {
-                let type_a = this.children[1].getAttribute('type');
+                let type_a = null;
+                if (this.children.length > 1) {
+                    if (this.children[1].hasAttribute('type')) {
+                        type_a = this.children[1].getAttribute('type');
+                    }
+                }
+                if (type_a == null) {
+                    if (this.hasAttribute('type')) {
+                        type_a = this.getAttribute('type');
+                    }
+                }
                 tab_property.innerHTML = text_prop + typename + type_a;
                 list_selected = [selectedParent];
+                selectedParent = this;
                 GetProperties();
             }
-            selectedParent = this;
+
         }, false);
     }
 }
 
 function Compo(name, id, value, placeholder) {
-    let div = document.createElement("div");
-    div.setAttribute("id", "id_" + name);
-    div.setAttribute("name", name);
-    div.classList.add("compo_proto");
-    container.append(div);
+
+    let div = null;
     switch (name) {
         case "accordion":
+            div = document.createElement("div");
+            div.setAttribute("id", "id_" + name);
+            div.setAttribute("name", name);
+            div.setAttribute("type", name);
+            div.classList.add("compo_proto");
+            container.append(div);
+
             div.setAttribute("id", "id_" + name + id);
             for (let i = 0; i < placeholder.length; i++) {
                 let div_item = document.createElement("div");
@@ -479,6 +494,8 @@ function Compo(name, id, value, placeholder) {
             }
             break;
         case "navbar":
+
+            new NavBar("navbar", selectedParent);
 
             break;
         case "badge":
@@ -527,12 +544,15 @@ function Compo(name, id, value, placeholder) {
 
             break;
     }
-    if (selectedParent == null) {
-        document.body.appendChild(div);
-    } else {
-        selectedParent.appendChild(div)
+    if (div !== null) {
+        if (selectedParent == null) {
+            document.body.appendChild(div);
+        } else {
+            selectedParent.appendChild(div)
+        }
     }
-    AddListenerComponents("compo_proto", "Component")
+
+    AddListenerComponents("compo_proto", "")
 }
 
 function AllUnSelection() {
@@ -694,7 +714,13 @@ function InitActionsComponent() {
             }];
             index_accordion++;
             new Compo("accordion", index_accordion, "", list_accord);
+
         });
+        compo[CompoType.Navbar].setCallBack(() => {
+            new Compo("navbar", 0, "", "");
+        });
+
+        //AddListenerComponents("compo_proto", "Component")
     }
 }
 
@@ -804,6 +830,10 @@ function GetProperties() {
         if (prop_id == null) {
             prop_id = selectedParent.children[1].getAttribute('id');
             prop_name = selectedParent.children[1].getAttribute('name');
+        }
+        if (prop_id == null) {
+            prop_id = selectedParent.getAttribute('id');
+            prop_name = selectedParent.getAttribute('name');
         }
 
         if (prop_id)
