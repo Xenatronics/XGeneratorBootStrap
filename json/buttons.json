@@ -1,0 +1,58 @@
+[
+  [
+    {
+      "name": "Name",
+      "value": "btn btn-primary",
+      "category": "input"
+    }
+  ],
+  [
+    {
+      "name": "Select",
+      "list": [
+        {
+          "name": "primary"
+        },
+        {
+          "name": "secondary"
+        },
+        {
+          "name": "success"
+        },
+        {
+          "name": "danger"
+        },
+        {
+          "name": "warning"
+        },
+        {
+          "name": "info"
+        },
+        {
+          "name": "light"
+        },
+        {
+          "name": "dark"
+        },
+        {
+          "name": "link"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "name": "Select",
+      "list": [
+        {
+          "name": "normal",
+          "prop": "btn btn-"
+        },
+        {
+          "name": "outline",
+          "prop": "btn btn-outline-"
+        }
+      ]
+    }
+  ]
+]

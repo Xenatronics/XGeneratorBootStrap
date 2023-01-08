@@ -2,12 +2,14 @@
 <html lang='fr'>
 <head>
     <meta charset='UTF-8'>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet'
           integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous'>
     <link href="./home.css" rel='stylesheet'>
-
-    <title>BootStrap Gen V1.0</title>
+    <link href="./css/scrollbar.css" rel='stylesheet'>
+    <link href="./css/menucontext.css" rel='stylesheet'>
+    <title>BootStrap XGen V1.0</title>
 </head>
 
 <body>
@@ -23,15 +25,15 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Non</button>
-                <button type="button" onclick="onDelete()" class="btn btn-success">Oui</button>
+                <button id="button_yes" type="button" onclick="onDelete()" class="btn btn-success">Oui</button>
             </div>
         </div>
     </div>
 </div>
-<h2>Generator BootStrap</h2>
+<h2 id="title">XGenerator BootStrap Version 0.1 Beta</h2>
 <hr>
 <div id="main">
-    <div id="properties">
+    <div id="menu_left">
         <ul class="nav nav-tabs mb-3" id="myTab0" role="tablist">
             <li class="nav-item" role="presentation">
                 <button
@@ -75,10 +77,65 @@
         </ul>
         <div class="tab-content" id="mytabContent">
             <div class="tab-pane fade show active" id="create" role="tabpanel" aria-labelledby="home-tab0">
-                <p class="text-center"><b>Composants :</b></p>
+
+                <ul class="nav nav-tabs " id="menu_compo">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" href='#panel_container' data-bs-toggle='tab'>
+                            Containers
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href='#panel_input' data-bs-toggle='tab'>
+                            Inputs
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href='#panel_button' data-bs-toggle='tab'>
+                            Boutons
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href='#panel_compo' data-bs-toggle='tab'>
+                            Composants
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane  fade show active" id="panel_container" role="tabpanel">
+                    </div>
+                    <div class="tab-pane fade" role="tabpanel" id="panel_input">
+
+                    </div>
+                    <div class="tab-pane fade" role="tabpanel" id="panel_button">
+                        <div class="ms-1 col mt-3">
+                            <label class="col-2">Nom</label>
+                            <input class="col-10" id="button_name" type="text">
+                            <button id="button_sample" class="col btn btn-primary mt-3 mb-3">Bouton</button>
+                            <select id='button_type' class="col-9 form-select form-select-sm mb-2 me-2"></select>
+                            <select id='button_color' class="col-9 form-select form-select-sm mb-2 me-2"></select>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" role="tabpanel" id="panel_compo">
+                    </div>
+
+                </div>
             </div>
             <div class="tab-pane fade" id="property" role="tabpanel" aria-labelledby="profile-tab0">
-                <p class="text-center"><b>Propriété de :</b></p>
+                <span id="tab_property"><p class="text-center"><b>Propriété de :</b></p></span>
+                <div class="ms-1 col mb-2">
+                    <label class="col label-no-right"><b>ID:</b></label>
+                    <input id="prop_id" type="text" class="col-10 mb-2" value="" placeholder="ID">
+                    <label class="col label-no-right"><b>Nom:</b></label>
+                    <input id="prop_name" type="text" class="col-10 mb-2" value="" placeholder="Nom">
+                </div>
+                <hr>
+                <span id="tab_action"><p class="text-center"><b>Actions :</b></p></span>
+                <div>
+                    <button class="QComponent mb-2 ">Supprimer</button>
+                    <button class="QComponent mb-2">Convertir en...</button>
+                    <button onclick="swap()" class="QComponent mb-2">Echanger</button>
+                </div>
+
             </div>
             <div class="tab-pane fade" id="template" role="tabpanel" aria-labelledby="contact-tab0">
                 <p class="text-center"><b>Patrons disponibles:</b></p>
@@ -91,67 +148,13 @@
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'
         integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM'
         crossorigin='anonymous'></script>
+
 <script src="./js/xcomponents.js"></script>
 <script src="./js/xgenerator.js"></script>
+<script src="./js/xdate.js"></script>
+<script src="./js/input-mask.js"></script>
+
 <script>
-
-    let tabComponent = [
-        "Rangée",
-        "Colonne",
-        "Input Text",
-        "Input Password",
-        "Input Date",
-        "Input Time",
-        "Input Fichier",
-        "Input Numérique",
-        "Input Caméra",
-    ];
-
-    function CreateListComponent() {
-        const component = document.getElementById("create");
-        for (let i = 0; i < tabComponent.length; i++) {
-            c[i] = new QLabel(tabComponent[i], component, "QComponent");
-        }
-    }
-
-    const InputType = {
-        Row: 0,
-        Col: 1,
-        Text: 2,
-        Password: 3,
-        Date: 4,
-        Time: 5,
-        File: 6,
-        Numeric: 7,
-        Camera: 8,
-    }
-
-    function InitActions() {
-        c[InputType.Row].setCallBack(() => {
-            Row();
-        })
-        c[InputType.Col].setCallBack(() => {
-            Col();
-        })
-        c[InputType.Text].setCallBack(() => {
-            Input("text", "", "input", "Nom du champ");
-        })
-        c[InputType.Password].setCallBack(() => {
-            Input("password", "1234567", "password", "Mot de passe");
-        })
-        c[InputType.Date].setCallBack(() => {
-            Input("date", "2022-12-12", "date");
-        })
-        c[InputType.Time].setCallBack(() => {
-            Input("time", "08:30", "time");
-        })
-        c[InputType.File].setCallBack(() => {
-            Input("file", "Aucun", "Nom du fichier");
-        })
-        c[InputType.Numeric].setCallBack(() => {
-            Input("number", 100, "numeric");
-        })
-    }
 
     let tabTemplate = [
         "Modal Alert",
@@ -170,27 +173,79 @@
         }
     }
 
-    Container();
-    CreateListComponent();
-    CreateTemplate();
+    new Container();
 
-    fetch("json/properties.json")
-        .then(response => response.json())
-        .then(data => console.log(data))
+    let root = document.getElementById("container");
 
-    InitActions();
     document.addEventListener('keydown', (event) => {
         const nomTouche = event.key;
-        console.log((nomTouche))
-        if (nomTouche === "Delete") {
-            DeleteComponent();
+
+        switch (event.key) {
+            case "Delete":
+                DeleteComponent();
+                ClearProperties();
+                break;
+            case "ArrowUp":
+                MoveItem(1);
+                break;
+            case "ArrowDown":
+                MoveItem(0);
+                break;
+            case "ArrowLeft":
+                MoveItem(1);
+                break;
+            case "ArrowRight":
+                MoveItem(0);
+                break;
+            case "PageUp":
+                selectedParent = root;
+                selectedParent.click();
+                break;
+            case "Escape":
+                if (selectedParent !== root) {
+                    try {
+                        ParentFocus();
+                    } catch (e) {
+                    }
+                }
+                break;
         }
+        console.log(nomTouche);
     });
 
+    CreateCategories();
+    CreateTemplate();
+    CreateButtonsDirection();
+    CreateButtons();
 
+    function AddEventProperties() {
+        let prop_id = document.getElementById("prop_id");
+        let prop_name = document.getElementById("prop_name");
+
+        prop_id.removeEventListener("click", () => {
+        });
+        prop_name.removeEventListener("click", () => {
+        });
+
+        prop_id.addEventListener("input", (evt) => {
+            //const text=evt.target;
+            console.log(prop_id.value);
+            selectedParent.setAttribute("id", prop_id.value);
+        });
+        prop_name.addEventListener("input", (evt) => {
+            //const text=evt.target;
+            console.log(prop_name.value);
+            selectedParent.setAttribute("name", prop_name.value);
+        });
+    }
+
+    AddEventProperties();
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+
+    });
 </script>
 </body>
-
-
 
 </html>

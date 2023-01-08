@@ -2,46 +2,222 @@
   {
     "name": "Row",
     "type": "container",
-    "function": "Row()"
+    "category": "grid"
   },
   {
     "name": "Col",
     "type": "container",
-    "function": "Col()"
+    "category": "grid"
+  },
+  {
+    "name": "Grid-12",
+    "type": "container",
+    "category": "grid"
+  },
+  {
+    "name": "Grid-6-6",
+    "type": "container",
+    "category": "grid"
+  },
+  {
+    "name": "Grid-4-8",
+    "type": "container",
+    "category": "grid"
+  },
+  {
+    "name": "Grid-8-4",
+    "type": "container",
+    "category": "grid"
+  },
+  {
+    "name": "Grid-4-4-4",
+    "type": "container",
+    "category": "grid"
+  },
+  {
+    "name": "Grid-3-3-3-3",
+    "type": "container",
+    "category": "grid"
+  },
+  {
+    "name": "Grid-2-2-2-2-2",
+    "type": "container",
+    "category": "grid"
   },
   {
     "name": "Input",
     "type": "text",
-    "function": "Input('text')"
+    "category": "input"
   },
   {
     "name": "Input",
     "type": "password",
-    "function": "Input('password')"
+    "category": "input"
   },
   {
     "name": "Input",
     "type": "date",
-    "function": "Input('date')"
+    "category": "input"
   },
   {
     "name": "Input",
     "type": "time",
-    "function": "Input('time')"
+    "category": "input"
   },
   {
     "name": "Input",
-    "type": "file",
-    "function": "Input('file')"
+    "type": "datetime",
+    "category": "input"
+  },
+  {
+    "name": "Input",
+    "type": "week",
+    "category": "input"
   },
   {
     "name": "Input",
     "type": "numeric",
-    "function": "Input('numeric')"
+    "category": "input"
   },
   {
     "name": "Input",
-    "type": "camera",
-    "function": "Input('camera')"
+    "type": "color",
+    "category": "input"
+  },
+  {
+    "name": "Input",
+    "type": "range",
+    "category": "input"
+  },
+  {
+    "name": "Input",
+    "type": "file",
+    "category": "input"
+  },
+  {
+    "name": "Input",
+    "type": "radio",
+    "category": "input"
+  },
+  {
+    "name": "Input",
+    "type": "checkbox",
+    "category": "input"
+  },
+  {
+    "name": "Input",
+    "type": "mail",
+    "category": "input"
+  },
+  {
+    "name": "Input",
+    "type": "tel",
+    "category": "input"
+  },
+  {
+    "name": "Input",
+    "type": "search",
+    "category": "input"
+  },
+  {
+    "name": "Input",
+    "type": "hidden",
+    "category": "input"
+  },
+  {
+    "name": "Input",
+    "type": "switch",
+    "category": "input"
+  },
+  {
+    "name": "NavBar",
+    "type": "navbar",
+    "category": "compo"
+  },
+  {
+    "name": "Accordéon",
+    "type": "accordion",
+    "category": "compo"
+  },
+  {
+    "name": "Alert",
+    "type": "alert",
+    "category": "compo"
+  },
+  {
+    "name": "Badge",
+    "type": "badge",
+    "category": "compo"
+  },
+  {
+    "name": "Tabs",
+    "type": "tabs",
+    "category": "compo"
+  },
+  {
+    "name": "Collapse",
+    "type": "collapse",
+    "category": "compo"
+  },
+  {
+    "name": "DropDown",
+    "type": "dropdown",
+    "category": "compo"
+  },
+  {
+    "name": "ListGroup",
+    "type": "listgroup",
+    "category": "compo"
+  },
+  {
+    "name": "Card",
+    "type": "card",
+    "category": "compo"
+  },
+  {
+    "name": "Carousel",
+    "type": "carousel",
+    "category": "compo"
+  },
+  {
+    "name": "BreadCrumb",
+    "type": "breadcrumb",
+    "category": "compo"
+  },
+  {
+    "name": "OffCanvas",
+    "type": "offcanvas",
+    "category": "compo"
+  },
+  {
+    "name": "Pagination",
+    "type": "pagination",
+    "category": "compo"
+  },
+  {
+    "name": "PopOver",
+    "type": "popover",
+    "category": "compo"
+  },
+  {
+    "name": "Progress",
+    "type": "progress",
+    "category": "compo"
+  },
+  {
+    "name": "Spinner",
+    "type": "spiner",
+    "category": "compo"
+  },
+
+  {
+    "name": "Toast",
+    "type": "toast",
+    "category": "compo"
+  },
+  {
+    "name": "ToolTips",
+    "type": "tooltips",
+    "category": "compo"
   }
 ]
