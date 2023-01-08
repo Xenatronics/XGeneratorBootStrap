@@ -2,6 +2,8 @@ let container = null;
 let selectedParent = null;
 let index_selected = -1;
 let index_col_selected = 0;
+
+let index_accordion = 0;
 let c = [];
 let g = [];
 let t = [];
@@ -11,7 +13,7 @@ let list_selected = [];
 let dataProperties = [];
 let myModalEl = document.querySelector('#modalDelete');
 let btn_yes = document.querySelector('#button_yes');
-;
+
 let modal = bootstrap.Modal.getOrCreateInstance(myModalEl);
 
 myModalEl.addEventListener('shown.bs.modal', () => {
@@ -326,9 +328,6 @@ function Input(type, value, id, placeholder) {
         case "file":
             div.classList.add("mb-3")
             input.setAttribute("value", value);
-            //div.setAttribute("id", "id_" + type);
-            //div.setAttribute("name", "name_" + type);
-
             div.classList.add("input-group");
             div.classList.add("input-groupproto");
             input.classList.add("form-control");
@@ -395,7 +394,6 @@ function Input(type, value, id, placeholder) {
 
     AddListenerInputs("form-check", "Bouton ");
     AddListenerInputs("input-group", "Input ");
-
     RefreshMasked();
     RefreshPrefixed();
     return input;
@@ -419,64 +417,122 @@ function AddListenerInputs(classname, typename) {
     }
 }
 
-function Compo(name, value,  placeholder) {
+function AddListenerComponents(classname, typename) {
+    let compos = document.getElementsByClassName(classname)
+    for (let i = 0; i < compos.length; i++) {
+        compos[i].addEventListener("click", function () {
+            event.stopPropagation()
+            AllUnSelection();
+            let selected = this.classList.toggle("focus");
+            if (selected) {
+                let type_a = this.children[1].getAttribute('type');
+                tab_property.innerHTML = text_prop + typename + type_a;
+                list_selected = [selectedParent];
+                GetProperties();
+            }
+            selectedParent = this;
+        }, false);
+    }
+}
+
+function Compo(name, id, value, placeholder) {
     let div = document.createElement("div");
-    div.setAttribute("id", "id_"+name);
+    div.setAttribute("id", "id_" + name);
     div.setAttribute("name", name);
     div.classList.add("compo_proto");
+    container.append(div);
     switch (name) {
         case "accordion":
-            
+            div.setAttribute("id", "id_" + name + id);
+            for (let i = 0; i < placeholder.length; i++) {
+                let div_item = document.createElement("div");
+                div_item.classList.add("accordion-item");
+                let h2 = document.createElement("h2");
+                h2.classList.add("accordion-header");
+                h2.setAttribute("id", "head" + id + (i + 1));
+                let button = document.createElement("button");
+                button.classList.add("accordion-button");
+                if (i !== 0) {
+                    button.classList.add("collapsed");
+                }
+                button.setAttribute("data-bs-toggle", "collapse");
+                button.setAttribute("data-bs-target", "#collapse_" + id + (i + 1));
+                button.setAttribute("aria-expanded", (i === 0) ? "true" : "false");
+
+                button.innerHTML = placeholder[i].name;
+                div_item.append(h2);
+                h2.append(button);
+                let div_collapse = document.createElement("div");
+                div_collapse.classList.add("accordion-collapse");
+                div_collapse.classList.add("collapse");
+                div_collapse.setAttribute("id", "collapse_" + id + (i + 1));
+                if (i === 0) {
+                    div_collapse.classList.add("show");
+                }
+                div_collapse.setAttribute("data-bs-parent", "#id_" + name + id);
+                div_item.append(div_collapse);
+                let div_body = document.createElement("div");
+                div_body.classList.add("accordion-body");
+                div_body.innerHTML = placeholder[i].content;
+                div_collapse.append(div_body);
+                div.append(div_item);
+            }
             break;
         case "navbar":
-            
+
             break;
         case "badge":
-            
+
             break;
         case "alert":
-            
+
             break;
         case "tabs":
-            
+
             break;
         case "collapse":
-            
+
             break;
         case "dropdown":
-            
+
             break;
         case "listgroup":
-            
+
             break;
         case "card":
-            
+
             break;
         case "carousel":
-            
+
             break;
         case "offcanvas":
-            
+
             break;
         case "pagination":
-            
+
             break;
         case "popover":
-            
+
             break;
         case "progress":
-            
+
             break;
         case "spinner":
-            
+
             break;
         case "toast":
-            
+
             break;
         case "tooltips":
-            
+
             break;
     }
+    if (selectedParent == null) {
+        document.body.appendChild(div);
+    } else {
+        selectedParent.appendChild(div)
+    }
+    AddListenerComponents("compo_proto", "Component")
 }
 
 function AllUnSelection() {
@@ -520,10 +576,9 @@ function CreateListInput() {
 function CreateListComponent() {
     const component = document.getElementById("panel_compo");
     for (let i = 0; i < list_compo.length; i++) {
-        compo[i] = new QLabel(list_compo[i].name, component, "QComponent");
+        compo[i] = new QLabel(list_compo[i].type, component, "QComponent");
     }
 }
-
 
 function CreateListContainer() {
     const component = document.getElementById("panel_container");
@@ -626,10 +681,20 @@ function InitActionsInputs() {
 function InitActionsComponent() {
     if (compo.length > 0) {
         compo[CompoType.Accordeon].setCallBack(() => {
-            list_accord = []
-            new Compo("accordeon", "", list_accord);
+            let first = "Il s'agit du corps accordéon du premier élément.";
+            let second = "Il s'agit du corps accordéon du second élément.";
+            let third = "Il s'agit du corps accordéon du troisième élément.";
+            let common = "Il est affiché par défaut, jusqu'à ce que le plugin de repli ajoute les classes appropriées que nous utilisons pour styliser chaque élément. Ces classes contrôlent l'apparence générale, ainsi que l'affichage et le masquage via des transitions CSS. Vous pouvez modifier tout cela avec un CSS personnalisé ou remplacer nos variables par défaut. Il convient également de noter qu'à peu près n'importe quel HTML peut aller dans le .accordion-body, bien que la transition limite le débordement.";
+            let list_accord = [{
+                "name": "<b>Accordeon Article #1</b>", "content": first + common
+            }, {
+                "name": "<b>Accordeon Article #2</b>", "content": second + common
+            }, {
+                "name": "<b>Accordeon Article #3</b>", "content": third + common
+            }];
+            index_accordion++;
+            new Compo("accordion", index_accordion, "", list_accord);
         });
-
     }
 }
 
@@ -638,7 +703,6 @@ function CreateButtonDirection(name, index) {
     let button = document.createElement("button");
     button.classList.add("QComponent");
     button.innerText = name;
-
     button.addEventListener("click", () => {
         ActionButtonDirection(index)
     });
@@ -666,7 +730,6 @@ function ActionButtonDirection(direction) {
     if (direction === 3) {// Haut bas
         console.log("bas")
     }
-
     return true;
 }
 

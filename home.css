@@ -72,7 +72,7 @@
     border: 1px solid #704019;
     min-height: 60px;
     z-index: 0;
-    margin: 12px 5px 5px;
+    margin: 12px 5px 15px;
     padding: 10px 10px 10px 60px;
 }
 
@@ -96,16 +96,21 @@
 }
 
 .rowproto:hover {
-    border: 2px dotted #E58D8DFF !important;
+    border: 2px solid #E58D8DFF !important;
+    margin: 12px 5px 15px;
+    padding: 10px 10px 10px 60px;
 }
 
 .rowproto.focus {
     border: 2px solid red !important;
+    margin: 12px 5px 15px;
+    padding: 10px 10px 10px 60px;
 }
 
 .rowproto.focus:before {
     border: 2px solid red !important;
     font-weight: 550;
+
 }
 
 /* Colonne */
@@ -259,12 +264,34 @@
 }
 
 
+.compo_proto {
+    margin-top: 15px;
+    margin-left: 30px;
+    margin-bottom: 15px;
+    width: 90% !important;
+    cursor: pointer;
+}
+
+.compo_proto:hover {
+    margin-top: 15px;
+    margin-left: 30px;
+    border: 2px solid #673d9b !important;
+    border-radius: 4px;
+}
+
+.compo_proto.focus {
+    margin-top: 15px;
+    margin-left: 30px;
+    border: 2px solid red !important;
+    border-radius: 4px
+}
+
 
 
 #create, #template, #property{
     width: inherit;
     margin: 5px;
-    background: linear-gradient(#f8f8f8, #e0dfdf) ;
+    background: linear-gradient(#f8f8f8, #e3e3e3) ;
     border-right: 1px solid lightgray;
     padding-top: 5px;
     padding-left: 2px;
